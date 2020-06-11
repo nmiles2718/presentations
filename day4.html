@@ -13483,7 +13483,7 @@ a.anchor-link {
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="n">lambda_name</span> <span class="o">=</span> <span class="s1">&#39;Name of your lambda function&#39;</span> 
-<span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">profile_name</span><span class="o">=</span><span class="s1">&#39;ndmiles_admin&#39;</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">profile_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;lambda&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="s1">&#39;us-east-1&#39;</span><span class="p">)</span>
 <span class="n">event</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Your first name&#39;</span><span class="p">,</span>
