@@ -13223,8 +13223,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="./endgame.jpg" width="75%" height="75%"></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Outline">Outline<a class="anchor-link" href="#Outline">&#182;</a></h2><ul>
-<li>Review of last time</li>
 <li>Docker 101<ul>
 <li>Containers</li>
 </ul>
@@ -13352,7 +13358,9 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example:-Building-the-deployment-package,-Part-1">Example: Building the deployment package, Part 1<a class="anchor-link" href="#Example:-Building-the-deployment-package,-Part-1">&#182;</a></h2><ul>
+<li>Change directory into <code>~/acs_aws_day5_code</code></li>
 <li>Launch an EC2 template to use for creating the Docker container. <ul>
+<li>For <code>TEMPATE_ID</code>, use <code>lt-0e86f881efd781a45</code></li>
 <li>For <code>KEYNAME</code> argument, exclude the <code>.pem</code> suffix </li>
 </ul>
 </li>
@@ -13454,7 +13462,11 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example:-Configure-a-test-event-for-the-Lambda-function">Example: Configure a test event for the Lambda function<a class="anchor-link" href="#Example:-Configure-a-test-event-for-the-Lambda-function">&#182;</a></h2><div class="highlight"><pre><span></span><span class="p">{</span>
+<h2 id="Example:-Configure-a-test-event-for-the-Lambda-function">Example: Configure a test event for the Lambda function<a class="anchor-link" href="#Example:-Configure-a-test-event-for-the-Lambda-function">&#182;</a></h2><ul>
+<li>Create a test event for your lambda function in the AWS Lambda console</li>
+<li>Copy and paste the test below making sure to update the "s3_output_bucket" to point to the bucket you created</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;fits_s3_key&quot;</span><span class="p">:</span> <span class="s2">&quot;testsdatangc104_crj.fits&quot;</span><span class="p">,</span>
   <span class="s2">&quot;fits_s3_bucket&quot;</span><span class="p">:</span> <span class="s2">&quot;test-data-day5&quot;</span><span class="p">,</span>
   <span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
