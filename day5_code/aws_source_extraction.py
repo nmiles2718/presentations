@@ -49,6 +49,7 @@ def download_file(event):
     )
     return f"/tmp/{os.path.basename(fname)}"
 
+
 def get_image_metadata(phot):
     """Store some key metadata
 
@@ -276,9 +277,19 @@ def upload_results(event, files_to_upload=[], upload_dir=None):
 
 
 def process_event(event):
-    fname = event['fits_s3_key']
+    """
+
+    Parameters
+    ----------
+    event
+
+    Returns
+    -------
+
+    """
     fname = download_file(event)
-    basename = os.path.basename(fname).split('_')[0]
+    basename = os.path.basename(fname)
+    upload_dir = basename.split('_')[0]
     phot = Photometry(fname=fname)
 
     # Run the photometry pipeline
@@ -326,7 +337,7 @@ def process_event(event):
     upload_results(
         event=event,
         files_to_upload=files_to_upload,
-        upload_dir=basename
+        upload_dir=upload_dir
     )
     # Now we delete the file we downloaded to ensure if memory is persisted
     # between Lambdas, we won't fill up our disk space.
@@ -336,7 +347,6 @@ def process_event(event):
 
 def handler(event, context):
     process_event(event)
-
 
 
 if __name__ == "__main__":
