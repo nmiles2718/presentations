@@ -13235,7 +13235,7 @@ a.anchor-link {
 <li>generate a catalog of photometry for all sources found in the image</li>
 </ul>
 </li>
-<li>Containerize the Lambda function and its dependencies<ul>
+<li>Containerize the Lambda function and its dependencies using <code>EC2</code><ul>
 <li><code>astropy</code></li>
 <li><code>matplotlib</code></li>
 <li><code>numpy</code></li>
@@ -13274,15 +13274,114 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example:-Create-the-Lambda-Function">Example: Create the Lambda Function<a class="anchor-link" href="#Example:-Create-the-Lambda-Function">&#182;</a></h2><ul>
-<li>Click to download the following files<ul>
-<li><a href="./day5_code/build.sh">build.sh</a></li>
+<h2 id="Example:-Overview">Example: Overview<a class="anchor-link" href="#Example:-Overview">&#182;</a></h2><ul>
+<li>To circumvent any issues associated with installing/configuring Docker on your computer, we will build our container on a small EC2 Instance.</li>
+<li>An outline of the process is as follows,<ul>
+<li>Build the container on EC2</li>
+<li>Upload the container to S3</li>
+<li>Create a Lambda function and specify the container in S3 as the source code</li>
+<li>Create a test event for the Lambda function</li>
 </ul>
 </li>
 </ul>
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example:-Download-the-Software">Example: Download the Software<a class="anchor-link" href="#Example:-Download-the-Software">&#182;</a></h2><h4 id="Place-the-files-in-the-following-directory:-~/acs_aws_day5_code">Place the files in the following directory: <code>~/acs_aws_day5_code</code><a class="anchor-link" href="#Place-the-files-in-the-following-directory:-~/acs_aws_day5_code">&#182;</a></h4><ul>
+<li><a href="./day5_code/build.sh">build.sh</a><ul>
+<li>Build script used by docker to create our container</li>
+</ul>
+</li>
+<li><a href="./day5_code/requirements.txt">requirements.txt</a><ul>
+<li><code>pip</code> requirements file specifying the packages to install</li>
+</ul>
+</li>
+<li><a href="./day5_code/extract_photometry.py">extract_photometry.py</a><ul>
+<li>Python class for performing aperture photometry using Python wrapped <a href="https://sep.readthedocs.io/en/v1.0.x/">Source Extractor</a></li>
+</ul>
+</li>
+<li><a href="./day5_code/datavis.py">datavis.py</a><ul>
+<li>Convenience class for handling all data visualization </li>
+</ul>
+</li>
+<li><a href="./day5_code/aws_source_extraction.py">aws_source_extraction.py</a><ul>
+<li>Python module for running source extraction on AWS</li>
+<li>This is the file that contains the <code>handler</code> for the Lambda function</li>
+</ul>
+</li>
+<li><a href="./day5_code/launch_instance.py">launch_instance.py</a><ul>
+<li>Launch an EC2 instance using a specified launch template and key pair</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Containerizing-the-Lambda-Function">Containerizing the Lambda Function<a class="anchor-link" href="#Containerizing-the-Lambda-Function">&#182;</a></h2><ul>
+<li>Launch an EC2 template to use for creating the Docker container</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="go">python launch_instance.py -template_id &lt;TEMPLATE_ID&gt; -keyname &lt;KEYNAME&gt;</span>
+</pre></div>
+<ul>
+<li>Copy over the <code>acs_aws_day5_code</code> directory to your EC2 instance</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="go">scp -ri &quot;path/to/key.pem&quot; ~/acs_aws_day5_code ec2-user@public_dns</span>
+</pre></div>
+<ul>
+<li>Install and configure docker,<ul>
+<li>install: <code>sudo yum install docker</code></li>
+<li>start docker: <code>sudo service docker start</code></li>
+<li>set permissions: <code>sudo usermod -a -G docker ec2-user</code></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Containerizing-the-Lambda-Function-Continued">Containerizing the Lambda Function Continued<a class="anchor-link" href="#Containerizing-the-Lambda-Function-Continued">&#182;</a></h2><ul>
+<li>Log out of the EC2 instance</li>
+<li>Log back in and execute the command: <code>docker info</code><ul>
+<li>If no output is shown, your docker installation failed</li>
+</ul>
+</li>
+<li>Change directory to <code>~/acs_aws_day5_code</code></li>
+<li>Execute the following commands to build your docker image<ul>
+<li><code>docker pull amazonlinux:2018.03</code></li>
+<li><code>docker run -v $(pwd):/outputs -it amazonlinux:2018.03 /bin/bash /outputs/build.sh</code><ul>
+<li>The final container is <code>venv.zip</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div></section></section>
 </div>
 </div>
