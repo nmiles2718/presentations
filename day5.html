@@ -13350,7 +13350,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Building-the-deployment-package">Building the deployment package<a class="anchor-link" href="#Building-the-deployment-package">&#182;</a></h2><ul>
+<h2 id="Example:-Building-the-deployment-package,-Part-1">Example: Building the deployment package, Part 1<a class="anchor-link" href="#Example:-Building-the-deployment-package,-Part-1">&#182;</a></h2><ul>
 <li>Launch an EC2 template to use for creating the Docker container. <ul>
 <li>For <code>KEYNAME</code> argument, exclude the <code>.pem</code> suffix </li>
 </ul>
@@ -13386,7 +13386,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Building-the-deployment-package">Building the deployment package<a class="anchor-link" href="#Building-the-deployment-package">&#182;</a></h2><ul>
+<h2 id="Example:-Building-the-deployment-package,-Part-2">Example: Building the deployment package, Part 2<a class="anchor-link" href="#Example:-Building-the-deployment-package,-Part-2">&#182;</a></h2><ul>
 <li>Log out of the EC2 instance</li>
 <li>Log back in and execute the command: <code>docker info</code><ul>
 <li>If no output is shown, your docker installation failed</li>
@@ -13422,7 +13422,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Creating-the-Lambda-function">Creating the Lambda function<a class="anchor-link" href="#Creating-the-Lambda-function">&#182;</a></h2><ul>
+<h2 id="Example:-Creating-the-Lambda-function">Example: Creating the Lambda function<a class="anchor-link" href="#Example:-Creating-the-Lambda-function">&#182;</a></h2><ul>
 <li>Navigate to the AWS Lambda Console</li>
 <li>Click <strong>"Create Function"</strong><ul>
 <li>Function name: whatever you want</li>
@@ -13453,7 +13453,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Configure-a-test-event-for-the-Lambda-function">Configure a test event for the Lambda function<a class="anchor-link" href="#Configure-a-test-event-for-the-Lambda-function">&#182;</a></h2><div class="highlight"><pre><span></span><span class="p">{</span>
+<h2 id="Example:-Configure-a-test-event-for-the-Lambda-function">Example: Configure a test event for the Lambda function<a class="anchor-link" href="#Example:-Configure-a-test-event-for-the-Lambda-function">&#182;</a></h2><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;fits_s3_key&quot;</span><span class="p">:</span> <span class="s2">&quot;testsdatangc104_crj.fits&quot;</span><span class="p">,</span>
   <span class="s2">&quot;fits_s3_bucket&quot;</span><span class="p">:</span> <span class="s2">&quot;test-data-day5&quot;</span><span class="p">,</span>
   <span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
@@ -13469,11 +13469,28 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Invoke-the-lambda-with-boto3">Invoke the lambda with <code>boto3</code><a class="anchor-link" href="#Invoke-the-lambda-with-boto3">&#182;</a></h2><div class="highlight"><pre><span></span><span class="go">python run_photometry.py -catalog_name example_catalog.txt -lambda_name &lt;YOUR LAMBDA NAME&gt; -output_bucket &lt;YOUR S3 BUCKET&gt;</span>
+<h2 id="Example:-Invoke-the-lambda-with-boto3">Example: Invoke the lambda with <code>boto3</code><a class="anchor-link" href="#Example:-Invoke-the-lambda-with-boto3">&#182;</a></h2><ul>
+<li>On your local machine, change directory to <code>~/acs_aws_day5_code</code></li>
+<li>Execute the following,</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="go">python run_photometry.py -catalog_name example_catalog.txt -lambda_name &lt;YOUR LAMBDA NAME&gt; -output_bucket &lt;YOUR S3 BUCKET&gt;</span>
 </pre></div>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div></section></section>
 </div>
 </div>
