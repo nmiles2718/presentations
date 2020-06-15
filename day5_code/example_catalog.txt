@@ -1,0 +1,10 @@
+hst/public/j6fy/j6fy04jyq/j6fy04jyq_flc.fits
+hst/public/j6fy/j6fy04k3q/j6fy04k3q_flc.fits
+hst/public/j6fy/j6fy04k8q/j6fy04k8q_flc.fits
+hst/public/j6fy/j6fy04kdq/j6fy04kdq_flc.fits
+hst/public/j6fy/j6fy04kiq/j6fy04kiq_flc.fits
+hst/public/j6fy/j6fy04knq/j6fy04knq_flc.fits
+hst/public/j6fy/j6fy04ksq/j6fy04ksq_flc.fits
+hst/public/j6fy/j6fy04l4q/j6fy04l4q_flc.fits
+hst/public/j8d2/j8d21amyq/j8d21amyq_flc.fits
+hst/public/j8d2/j8d21an6q/j8d21an6q_flc.fits

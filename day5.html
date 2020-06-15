@@ -13305,6 +13305,10 @@ a.anchor-link {
 <li><code>pip</code> requirements file specifying the packages to install</li>
 </ul>
 </li>
+<li><a href="./day5_code/example_image_catalog.txt" download>example_image_catalog.txt</a><ul>
+<li>Image catalog containing a list of images to be processed</li>
+</ul>
+</li>
 <li><a href="./day5_code/extract_photometry.py" download>extract_photometry.py</a><ul>
 <li>Python class for performing aperture photometry using Python wrapped <a href="https://sep.readthedocs.io/en/v1.0.x/">sep.readthedocs.io</a></li>
 </ul>
@@ -13445,6 +13449,15 @@ a.anchor-link {
   <span class="s2">&quot;r_outer&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
   <span class="s2">&quot;s3_output_bucket&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">YOUR</span> <span class="n">BUCKET</span> <span class="n">NAME</span><span class="o">&gt;</span>
 <span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Invoke-the-lambda-with-boto3">Invoke the lambda with <code>boto3</code><a class="anchor-link" href="#Invoke-the-lambda-with-boto3">&#182;</a></h2><div class="highlight"><pre><span></span><span class="go">python run_photometry.py -catalog_name example_catalog.txt -lambda_name &lt;YOUR LAMBDA NAME&gt; -output_bucket &lt;YOUR S3 BUCKET&gt;</span>
 </pre></div>
 
 </div>
