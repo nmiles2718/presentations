@@ -23,7 +23,7 @@ parser.add_argument('-output_bucket',
 def process_catalog(catalog=None, lambda_name=None, output_bucket=None):
     path_urls = [val.strip('\n') for val in open(catalog).readlines()]
     # Auth to create a Lambda function
-    session = boto3.Session(profile_name='ndmiles_admin')
+    session = boto3.Session(profile_name=None)
     client = session.client('lambda', region_name='us-east-1')
     delayed_objs = []
     st = time.time()

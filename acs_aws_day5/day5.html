@@ -13368,9 +13368,9 @@ a.anchor-link {
 <div class="highlight"><pre><span></span><span class="go">python launch_instance.py -template_id &lt;TEMPLATE_ID&gt; -keyname &lt;KEYNAME&gt;</span>
 </pre></div>
 <ul>
-<li>Copy over the <code>acs_aws_day5_code</code> directory to your EC2 instance</li>
+<li>Copy over the <code>acs_aws_day5_code</code> directory to the home directory (<code>~/</code>) of your EC2 instance</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="go">scp -ri &quot;path/to/key.pem&quot; ~/acs_aws_day5_code ec2-user@public_dns</span>
+<div class="highlight"><pre><span></span><span class="go">scp -ri &quot;path/to/key.pem&quot; ~/acs_aws_day5_code ec2-user@public_dns:~</span>
 </pre></div>
 <ul>
 <li>Use <code>setup_ec2.sh</code> to upload your AWS access keys<ul>
@@ -13486,7 +13486,7 @@ a.anchor-link {
 <li>On your local machine, change directory to <code>~/acs_aws_day5_code</code></li>
 <li>Execute the following,</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="go">python run_photometry.py -catalog_name example_image_catalog.txt -lambda_name &lt;YOUR LAMBDA NAME&gt; -output_bucket &lt;YOUR S3 BUCKET&gt;</span>
+<div class="highlight"><pre><span></span><span class="go">python run_photometry.py -catalog example_image_catalog.txt -lambda_name &lt;YOUR LAMBDA NAME&gt; -output_bucket &lt;YOUR S3 BUCKET&gt;</span>
 </pre></div>
 
 </div>
