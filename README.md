@@ -1,4 +1,3 @@
-# Presentations
 A catalog of presentations covering various topics
 
 ### AWS Training Slides
